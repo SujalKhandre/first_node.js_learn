@@ -2,6 +2,10 @@ const express = require('express')
 const app = express();
 const db = require('./db');
 
+
+require('dotenv').config();
+
+
 const person= require('./models/person');
 const menuItem=require('./models/menuItem');
 const bodyParser = require('body-parser');
@@ -19,6 +23,9 @@ app.use('/person', personRoutes);
 //import the router files
 const menuItemRoutes=require('./routes/menuItemRoutes');
 app.use('/menu', menuItemRoutes);
+
+const PORT=process.env.PORT || 3000;
+
 app.listen(3000, ()=>{
     console.log("server is on")
 })
